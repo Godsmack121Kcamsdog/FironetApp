@@ -1,4 +1,4 @@
-package fironet.com.weather.kucherenko.weather.components.api
+package fironet.com.weather.kucherenko.weather.components.utils
 
 object Const {
     const val API_KEY = "71e5aa3560142ce1a34a6a4b34cd9400"

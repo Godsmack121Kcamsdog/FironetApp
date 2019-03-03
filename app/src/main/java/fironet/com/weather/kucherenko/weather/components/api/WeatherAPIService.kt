@@ -4,8 +4,8 @@ import android.util.Log
 import com.ihsanbal.logging.Level
 import com.ihsanbal.logging.LoggingInterceptor
 import fironet.com.weather.kucherenko.weather.components.models.WeatherModel
+import fironet.com.weather.kucherenko.weather.components.utils.Const
 import io.reactivex.Flowable
-import io.reactivex.Single
 import io.reactivex.android.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.internal.platform.Platform

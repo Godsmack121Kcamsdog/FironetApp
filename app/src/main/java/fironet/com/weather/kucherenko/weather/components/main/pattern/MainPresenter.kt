@@ -3,7 +3,7 @@ package fironet.com.weather.kucherenko.weather.components.main.pattern
 import android.util.Log
 import android.widget.Toast
 import fironet.com.weather.kucherenko.weather.abstracts.presenter.BasePresenter
-import fironet.com.weather.kucherenko.weather.components.api.Const
+import fironet.com.weather.kucherenko.weather.components.utils.Const
 import fironet.com.weather.kucherenko.weather.components.api.WeatherAPIService
 import fironet.com.weather.kucherenko.weather.components.models.WeatherModel
 import io.reactivex.Flowable
