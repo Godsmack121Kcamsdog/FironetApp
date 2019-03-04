@@ -37,7 +37,7 @@ class WeatherModel(
         var id: Int? = null,
         @SerializedName("name")
         @Expose
-        var name: String? = null,
+        var name: String = "",
         @SerializedName("cod")
         @Expose
         var cod: Int? = null

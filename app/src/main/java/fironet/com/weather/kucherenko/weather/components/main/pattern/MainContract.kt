@@ -9,11 +9,13 @@ interface MainContract {
     interface Presenter : BaseMvpPresenter<MainContract.View> {
         fun requestWeather(city: String): Flowable<WeatherModel>
         fun requestWeather(cities: List<String>)
+        fun updateWeatherInfo()
     }
 
     interface View : BaseView {
         fun addNewCity(name: String)
-        fun openDetails(city:WeatherModel?)
+        fun openDetails(city: WeatherModel?)
         fun setWeatherInfo(list: List<WeatherModel>)
+        fun setNewCity(city: WeatherModel)
     }
 }

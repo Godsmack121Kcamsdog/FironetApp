@@ -1,6 +1,7 @@
 package fironet.com.weather.kucherenko.weather.components.adapters
 
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,15 +10,16 @@ import fironet.com.weather.kucherenko.weather.R
 import fironet.com.weather.kucherenko.weather.abstracts.view.BaseView
 import fironet.com.weather.kucherenko.weather.components.main.ui.MainActivity
 import fironet.com.weather.kucherenko.weather.components.models.WeatherModel
-import io.reactivex.Flowable
 
 class WeatherAdapter(private var view: BaseView) : RecyclerView.Adapter<WeatherAdapter.WeatherHolder>() {
 
     private var inflater: LayoutInflater = LayoutInflater.from(view.getContext())
     private val cities: MutableList<WeatherModel>
+    private val citiesMap: HashMap<String, Int>
 
     init {
         cities = ArrayList()
+        citiesMap = HashMap()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherHolder {
@@ -45,15 +47,27 @@ class WeatherAdapter(private var view: BaseView) : RecyclerView.Adapter<WeatherA
     fun updateContent(cities: List<WeatherModel>) {
         this.cities.clear()
         this.cities.addAll(cities)
+        Log.e("data","${cities.size}")
+        for (i in 0 until cities.size) {
+            citiesMap[cities[i].name] = i
+        }
         notifyDataSetChanged()
     }
 
     fun addItem(city: WeatherModel) {
-        cities.add(city)
-        notifyItemInserted(cities.size - 1)
+        if (!citiesMap.containsKey(city.name)) {
+            cities.add(city)
+            citiesMap.put(city.name, cities.size - 1)
+            notifyItemInserted(cities.size - 1)
+        } else {
+            val i = citiesMap[city.name]!!
+            cities.add(i, city)
+            notifyItemChanged(i)
+            cities.removeAt(i + 1)
+        }
     }
 
-    fun getRawData():List<WeatherModel> = cities
+    fun getRawData(): List<WeatherModel> = cities
 
     inner class WeatherHolder(v: View) : RecyclerView.ViewHolder(v), View.OnClickListener {
 
