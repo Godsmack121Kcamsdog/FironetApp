@@ -75,7 +75,6 @@ class MainPresenter : BasePresenter<MainContract.View>(), MainContract.Presenter
                         val list = DefaultData.getDefaultInfo()
                         manager.storeCitiesInDb(list)
                         view!!.setWeatherInfo(list)
-                        this.list.addAll(list)
                         Log.e("data", "empty")
                     } else {
                         Log.e("data", "not empty")
